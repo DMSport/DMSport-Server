@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      format_sql: true
+      generate-ddl: false
+    defer-datasource-initialization: true
+    show-sql: true
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            protocols: TLSv1.3
+          starttls:
+            enable: true
+            required: true
+    auth-exp: ${AUTH_CODE_EXP}
+
+redis:
+  port: ${REDIS_PORT}
+  host: ${REDIS_HOST}
+
+jwt:
+  header: ${HEADER}
+  prefix : ${PREFIX}
+  secret-key: ${JWT_SECRET}
+  access-exp: ${ACCESS_EXP}
+  refresh-exp: ${REFRESH_EXP}
