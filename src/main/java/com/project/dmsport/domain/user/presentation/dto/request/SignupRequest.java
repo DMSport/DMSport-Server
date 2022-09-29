@@ -21,6 +21,6 @@ public class SignupRequest {
     private String email;
 
     @NotBlank(message = "password는 Null 또는 공백 또는 띄어쓰기를 허용하지 않습니다.")
-    @Pattern(regexp = RegexpProperty.PASSWORD, message = "password는 8-30자여야합니다.")
+    @Pattern(regexp = RegexpProperty.PASSWORD, message = "password는 대소문자, 특수문자 포함 8-30자여야합니다.")
     private String password;
 }

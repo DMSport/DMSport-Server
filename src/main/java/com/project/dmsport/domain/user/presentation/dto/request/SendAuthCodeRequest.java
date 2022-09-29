@@ -5,11 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Getter
 @NoArgsConstructor
 public class SendAuthCodeRequest {
 
+    @Size(max = 40)
     @Pattern(regexp = RegexpProperty.EMAIL)
     private String email;
 }
