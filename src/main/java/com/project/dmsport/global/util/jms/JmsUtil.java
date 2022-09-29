@@ -25,7 +25,7 @@ public class JmsUtil {
 
             messageHelper.setTo(email);
             messageHelper.setFrom(jmsProperties.getUsername());
-            messageHelper.setSubject("[Togather] 이메일 인증");
+            messageHelper.setSubject("[DMSport] 이메일 인증");
 
             String text = getFormattedString(authenticationCode.split(""));
             boolean isHTML = true;
