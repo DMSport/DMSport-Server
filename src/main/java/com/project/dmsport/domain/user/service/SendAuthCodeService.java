@@ -20,8 +20,6 @@ public class SendAuthCodeService {
 
         String email = request.getEmail();
 
-        authCodeFacade.checkEmailDomain(email);
-
         if (!userFacade.emailIsExist(email)) {
             throw UserNotFoundException.EXCEPTION;
         }
