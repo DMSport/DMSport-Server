@@ -1,6 +1,7 @@
 package com.project.dmsport.domain.user.service;
 
 import com.project.dmsport.domain.user.domain.User;
+import com.project.dmsport.domain.user.exception.PasswordMismatchException;
 import com.project.dmsport.domain.user.facade.UserFacade;
 import com.project.dmsport.domain.user.presentation.dto.request.UpdatePasswordRequest;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,9 @@ public class UpdatePasswordService {
 
         User user = userFacade.getCurrentUser();
 
-        userFacade.checkPassword(user, request.getOldPassword());
+        if (!passwordEncoder.matches(request.getOldPassword(), user.getPassword())) {
+            throw PasswordMismatchException.EXCEPTION;
+        }
 
         user.updatePassword(passwordEncoder.encode(request.getNewPassword()));
     }
