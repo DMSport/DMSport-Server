@@ -1,6 +1,6 @@
 package com.project.dmsport.domain.notice.domain;
 
-import com.project.dmsport.domain.notice.domain.type.NoticeType;
+import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import com.project.dmsport.domain.user.domain.User;
 import com.project.dmsport.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
