@@ -1,8 +1,10 @@
 package com.project.dmsport.global.security.auth;
 
+import com.project.dmsport.domain.user.domain.enums.Authority;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
@@ -13,10 +15,11 @@ import java.util.Collections;
 public class AuthDetails implements UserDetails {
 
     private final String email;
+    private final Authority authority;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
+        return Collections.singleton(new SimpleGrantedAuthority(authority.name()));
     }
 
     @Override

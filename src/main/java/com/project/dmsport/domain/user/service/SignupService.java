@@ -2,6 +2,7 @@ package com.project.dmsport.domain.user.service;
 
 import com.project.dmsport.domain.auth.presentation.dto.response.TokenResponse;
 import com.project.dmsport.domain.user.domain.User;
+import com.project.dmsport.domain.user.domain.enums.Authority;
 import com.project.dmsport.domain.user.domain.repository.UserRepository;
 import com.project.dmsport.domain.user.exception.UserAlreadyExistException;
 import com.project.dmsport.domain.user.facade.AuthCodeFacade;
@@ -45,6 +46,7 @@ public class SignupService {
                 .name(name)
                 .email(email)
                 .password(passwordEncoder.encode(password))
+                .authority(Authority.USER)
                 .build()
         );
 

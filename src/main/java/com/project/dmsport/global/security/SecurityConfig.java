@@ -53,6 +53,15 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, "/users").permitAll()
                 .antMatchers(HttpMethod.POST, "/users/auth").permitAll()
                 .antMatchers(HttpMethod.PUT, "/users/auth").permitAll()
+                .antMatchers(HttpMethod.PUT, "/users/auth").permitAll()
+
+                .antMatchers(HttpMethod.POST, "/notice/club").hasAuthority("MANAGER")
+                .antMatchers(HttpMethod.POST, "/notice/all").hasAuthority("ADMIN")
+
+
+                .antMatchers(HttpMethod.PATCH, "/admin/ban").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PATCH, "/admin/manager/{user-id}").hasAuthority("ADMIN")
+
                 .anyRequest().authenticated()
 
                 .and()
