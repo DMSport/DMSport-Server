@@ -4,7 +4,7 @@ import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Builder
@@ -13,5 +13,5 @@ public class SearchNoticeResponse {
     private final String content;
     private final String writer;
     private final NoticeType type;
-    private final LocalDateTime createdAt;
+    private final LocalDate createdAt;
 }

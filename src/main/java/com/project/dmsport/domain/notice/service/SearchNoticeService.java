@@ -19,7 +19,7 @@ public class SearchNoticeService {
                 .content(notice.getContent())
                 .type(notice.getNoticeType())
                 .writer(notice.getUser().getName())
-                .createdAt(notice.getCreatedDate())
+                .createdAt(notice.getCreatedDate().toLocalDate())
                 .build();
     }
 }
