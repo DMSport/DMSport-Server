@@ -2,9 +2,11 @@ package com.project.dmsport.domain.notice.presentation.dto.response;
 
 import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import lombok.Builder;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+@Getter
 @Builder
 public class SearchNoticeResponse {
     private final String title;

@@ -2,8 +2,10 @@ package com.project.dmsport.domain.notice.presentation.dto.response;
 
 import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import lombok.Builder;
+import lombok.Getter;
 
 
+@Getter
 @Builder
 public class SearchAllNoticesResponse {
     private final Long id;
