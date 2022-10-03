@@ -4,13 +4,14 @@ import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.time.LocalDate;
 
 @Getter
 @Builder
-public class SearchAllNoticesResponse {
-    private final Long id;
+public class QueryNoticeDetailResponse {
     private final String title;
-    private final String contentPreview;
+    private final String content;
+    private final String writer;
     private final NoticeType type;
-    private final Long duration;
+    private final LocalDate createdAt;
 }
