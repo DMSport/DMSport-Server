@@ -1,7 +1,7 @@
 package com.project.dmsport.domain.notice.service;
 
 import com.project.dmsport.domain.notice.domain.repository.NoticeRepository;
-import com.project.dmsport.domain.notice.presentation.dto.SearchAllNoticesResponse;
+import com.project.dmsport.domain.notice.presentation.dto.response.SearchAllNoticesResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

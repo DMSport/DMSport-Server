@@ -1,9 +1,7 @@
-package com.project.dmsport.domain.notice.presentation.dto;
+package com.project.dmsport.domain.notice.presentation.dto.response;
 
 import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import lombok.Builder;
-
-import java.time.LocalDateTime;
 
 
 @Builder
