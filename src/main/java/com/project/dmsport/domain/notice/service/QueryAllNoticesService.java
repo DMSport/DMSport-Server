@@ -2,9 +2,11 @@ package com.project.dmsport.domain.notice.service;
 
 import com.project.dmsport.domain.notice.domain.repository.NoticeRepository;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryAllNoticesResponse;
+import com.project.dmsport.domain.notice.presentation.dto.response.QueryAllNoticesResponse.NoticeResponse;
 import com.project.dmsport.domain.user.domain.User;
 import com.project.dmsport.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,9 +19,9 @@ public class QueryAllNoticesService {
     private final UserFacade userFacade;
     public QueryAllNoticesResponse execute() {
         User user = userFacade.getCurrentUser();
-        List<QueryAllNoticesResponse.Notice> notice = noticeRepository.findAllByOrderByCreatedDateDesc().stream()
-                .map(
-                        n -> QueryAllNoticesResponse.Notice.builder()
+        List<NoticeResponse> notice = noticeRepository.findAll(Sort.by(Sort.Direction.DESC, "notice_id"))
+                .stream().map(
+                        n -> NoticeResponse.builder()
                                 .id(n.getId())
                                 .title(n.getTitle())
                                 .contentPreview(n.getContent().substring(0,20)+"...")
@@ -28,9 +30,6 @@ public class QueryAllNoticesService {
                                 .build()
                 ).collect(Collectors.toList());
 
-        return QueryAllNoticesResponse.builder()
-                .notices(notice)
-                .authority(user.getAuthority())
-                .build();
+        return new QueryAllNoticesResponse(notice, user.getAuthority());
     }
 }
