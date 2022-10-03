@@ -33,6 +33,9 @@ public class Club {
     @Column(nullable = false)
     private boolean hope;
 
+    @OneToOne(mappedBy = "club")
+    private ClubManager clubManager;
+
     @Builder
     public Club(ClubType clubType) {
         this.clubType = clubType;
