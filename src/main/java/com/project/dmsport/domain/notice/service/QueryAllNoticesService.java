@@ -6,7 +6,6 @@ import com.project.dmsport.domain.notice.presentation.dto.response.QueryAllNotic
 import com.project.dmsport.domain.user.domain.User;
 import com.project.dmsport.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

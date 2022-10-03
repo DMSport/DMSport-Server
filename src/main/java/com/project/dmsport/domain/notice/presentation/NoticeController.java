@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class NoticeController {
     private final QueryAllNoticesService queryAllNoticesService;
     private final QueryNoticeDetailService queryNoticeDetailService;
-    @GetMapping("/")
+    @GetMapping
     public QueryAllNoticesResponse searchAllNotices() {
         return queryAllNoticesService.execute();
     }
