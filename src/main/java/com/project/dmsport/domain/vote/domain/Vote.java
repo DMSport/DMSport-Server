@@ -28,7 +28,8 @@ public class Vote {
     private VoteType voteType;
 
     @NotNull
-    private Byte count;
+    @Column(columnDefinition = "TINYINT")
+    private Integer count;
 
     @NotNull
     private LocalDate voteDate;
