@@ -19,7 +19,7 @@ public class QueryAllNoticesService {
     private final UserFacade userFacade;
     public QueryAllNoticesResponse execute() {
         User user = userFacade.getCurrentUser();
-        List<NoticeResponse> notice = noticeRepository.findAll(Sort.by(Sort.Direction.DESC, "notice_id"))
+        List<NoticeResponse> notice = noticeRepository.findAll()
                 .stream().map(
                         n -> NoticeResponse.builder()
                                 .id(n.getId())
