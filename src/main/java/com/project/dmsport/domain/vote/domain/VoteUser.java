@@ -1,20 +1,19 @@
 package com.project.dmsport.domain.vote.domain;
 
 import com.project.dmsport.domain.user.domain.User;
+import com.project.dmsport.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @IdClass(VoteUserId.class)
 @Entity
-public class VoteUser {
+public class VoteUser extends BaseTimeEntity {
 
     @Id
     @ManyToOne(fetch = FetchType.LAZY)
@@ -26,14 +25,10 @@ public class VoteUser {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @NotNull
-    private LocalDateTime voteTime;
-
     @Builder
     public VoteUser(Vote vote, User user) {
         this.vote = vote;
         this.user = user;
-        this.voteTime = LocalDateTime.now();
     }
 
 }
