@@ -5,6 +5,7 @@ import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import com.project.dmsport.domain.notice.domain.repository.NoticeRepository;
 import com.project.dmsport.domain.notice.exception.NoAuthorityException;
 import com.project.dmsport.domain.notice.presentation.dto.request.CreateNoticeRequest;
+import com.project.dmsport.domain.user.domain.User;
 import com.project.dmsport.domain.user.domain.enums.Authority;
 import com.project.dmsport.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,8 @@ public class CreateNoticeService {
     private final UserFacade userFacade;
     @Transactional
     public void execute(CreateNoticeRequest request, NoticeType type) {
-        if(userFacade.getCurrentUser().getAuthority().equals(Authority.USER)) {
+        User user = userFacade.getCurrentUser();
+        if(user.getAuthority().equals(Authority.USER)) {
             throw NoAuthorityException.EXCEPTION;
         }
         String title = request.getTitle();
