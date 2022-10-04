@@ -41,7 +41,7 @@ public class Vote {
     private List<VoteUser> voteUsers;
 
     @Builder
-    public Vote(VoteType voteType, Byte count, boolean complete) {
+    public Vote(VoteType voteType, Integer count, boolean complete) {
         this.voteType = voteType;
         this.count = count;
         this.voteDate = LocalDate.now();
