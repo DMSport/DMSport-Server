@@ -9,12 +9,14 @@ import com.project.dmsport.domain.user.domain.enums.Authority;
 import com.project.dmsport.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class CreateNoticeService {
     private final NoticeRepository noticeRepository;
     private final UserFacade userFacade;
+    @Transactional
     public void execute(CreateNoticeRequest request, NoticeType type) {
         if(userFacade.getCurrentUser().getAuthority().equals(Authority.USER)) {
             throw NoAuthorityException.EXCEPTION;
