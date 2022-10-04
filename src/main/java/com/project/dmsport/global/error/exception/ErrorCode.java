@@ -27,6 +27,7 @@ public enum ErrorCode {
     MAIL_SEND_FAIL(404, "MAIL-404-1", "Mail Send Fail"),
 
     NOTICE_NOT_FOUND(404, "NOTICE-404-1", "Notice not found"),
+    NO_AUTHORITY(403, "NOTICE-403-1", "No authority"),
 
     FORBIDDEN(403, "COMMON-403-1", "Forbidden"),
     INTERNAL_SERVER_ERROR(500, "SERVER-500-1", "Internal Server Error");
