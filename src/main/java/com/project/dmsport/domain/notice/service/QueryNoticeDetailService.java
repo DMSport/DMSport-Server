@@ -5,6 +5,7 @@ import com.project.dmsport.domain.notice.facade.NoticeFacade;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryNoticeDetailResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class QueryNoticeDetailService {
     private final NoticeFacade noticeFacade;
 
+    @Transactional(readOnly = true)
     public QueryNoticeDetailResponse execute(Long noticeId) {
         Notice notice = noticeFacade.findNoticeById(noticeId);
         return QueryNoticeDetailResponse.builder()

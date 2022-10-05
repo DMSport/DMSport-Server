@@ -7,6 +7,7 @@ import com.project.dmsport.domain.user.domain.User;
 import com.project.dmsport.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,6 +17,8 @@ import java.util.stream.Collectors;
 public class QueryAllNoticesService {
     private final NoticeRepository noticeRepository;
     private final UserFacade userFacade;
+
+    @Transactional(readOnly = true)
     public QueryAllNoticesResponse execute() {
         User user = userFacade.getCurrentUser();
         List<NoticeResponse> notice = noticeRepository.findAll()
