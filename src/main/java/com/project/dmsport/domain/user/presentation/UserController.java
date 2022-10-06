@@ -9,28 +9,11 @@ import com.project.dmsport.domain.user.presentation.dto.request.SignupRequest;
 import com.project.dmsport.domain.user.presentation.dto.request.UpdatePasswordRequest;
 import com.project.dmsport.domain.user.presentation.dto.request.VerifyAuthCodeRequest;
 import com.project.dmsport.domain.user.presentation.dto.request.WithdrawalRequest;
-import com.project.dmsport.domain.user.service.CheckEmailService;
-import com.project.dmsport.domain.user.service.FindPasswordService;
-import com.project.dmsport.domain.user.service.LoginService;
-import com.project.dmsport.domain.user.service.LogoutService;
-import com.project.dmsport.domain.user.service.SendAuthCodeService;
-import com.project.dmsport.domain.user.service.SendSignupAuthCodeService;
-import com.project.dmsport.domain.user.service.SignupService;
-import com.project.dmsport.domain.user.service.TokenRefreshService;
-import com.project.dmsport.domain.user.service.UpdatePasswordService;
-import com.project.dmsport.domain.user.service.VerifyAuthCodeService;
-import com.project.dmsport.domain.user.service.WithdrawalService;
+import com.project.dmsport.domain.user.presentation.dto.response.QueryMyInfoResponse;
+import com.project.dmsport.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -54,6 +37,8 @@ public class UserController {
 
     private final LogoutService logoutService;
     private final WithdrawalService withdrawalService;
+
+    private final QueryMyInfoService queryMyInfoService;
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PostMapping("/mail/duplicate")
@@ -117,5 +102,10 @@ public class UserController {
     @DeleteMapping
     public void withdrawal(@RequestBody @Valid WithdrawalRequest request){
         withdrawalService.execute(request);
+    }
+
+    @GetMapping("/my")
+    public QueryMyInfoResponse myInfo() {
+        return queryMyInfoService.execute();
     }
 }
