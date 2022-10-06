@@ -60,7 +60,8 @@ public class SecurityConfig {
 
 
                 .antMatchers(HttpMethod.PATCH, "/admin/ban").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.PATCH, "/admin/manager/{user-id}").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.PATCH, "/admin/users/manager/{user-id}").hasAuthority("ADMIN")
+                .antMatchers(HttpMethod.GET, "/admin/users").hasAnyAuthority("ADMIN")
 
                 .anyRequest().authenticated()
 
