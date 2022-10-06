@@ -10,16 +10,16 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class SearchAllUsersService {
+public class QueryUserListService {
     private final UserRepository userRepository;
 
     public List<UserResponse> execute() {
         return userRepository.findAllOrderByIdDesc().stream().map(
-                u->
+                user->
                         UserResponse.builder()
-                                .id(u.getId())
-                                .name(u.getName())
-                                .authority(u.getAuthority())
+                                .id(user.getId())
+                                .name(user.getName())
+                                .authority(user.getAuthority())
                                 .build()
                 ).collect(Collectors.toList());
     }
