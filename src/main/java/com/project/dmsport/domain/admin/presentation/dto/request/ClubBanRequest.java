@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ClubBanRequest {
 
-    @NotNull(message = "club_name은 Null, 공백, 띄어쓰기를 허용하지 않습니다.")
+    @NotNull(message = "club_type는 Null일 수 없습니다.")
     private ClubType clubType;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
