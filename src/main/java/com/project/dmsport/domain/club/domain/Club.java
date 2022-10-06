@@ -1,10 +1,7 @@
 package com.project.dmsport.domain.club.domain;
 
 import com.project.dmsport.domain.club.domain.enums.ClubType;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -41,6 +38,11 @@ public class Club {
         this.clubType = clubType;
         this.ban = false;
         this.hope = false;
+    }
+
+    public void stopClub(LocalDate banPeriod) {
+        this.ban = true;
+        this.banPeriod = banPeriod;
     }
 
 }
