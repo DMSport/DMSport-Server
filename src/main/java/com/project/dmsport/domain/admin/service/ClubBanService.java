@@ -26,11 +26,8 @@ public class ClubBanService {
         Club club = clubFacade.getClubByClubType(clubType);
 
         club.ban(banPeriod);
-
-        return ClubBanResponse.builder()
-                .ban(club.isBan())
-                .banPeriod(club.getBanPeriod())
-                .build();
+        
+        return new ClubBanResponse(club.isBan(), club.getBanPeriod());
     }
 
 }
