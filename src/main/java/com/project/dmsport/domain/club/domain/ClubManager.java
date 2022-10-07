@@ -32,4 +32,8 @@ public class ClubManager {
         this.user = user;
     }
 
+    public void changeClubManager(User user) {
+        this.user = user;
+    }
+
 }

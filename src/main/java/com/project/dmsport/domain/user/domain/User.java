@@ -62,4 +62,9 @@ public class User {
         this.password = password;
     }
 
+    public void changeUserAuthority(User user, Authority authority) {
+        this.authority = Authority.USER;
+        user.authority = authority;
+    }
+
 }
