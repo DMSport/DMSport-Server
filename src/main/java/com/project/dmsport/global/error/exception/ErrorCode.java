@@ -31,6 +31,8 @@ public enum ErrorCode {
 
     CLUB_NOT_FOUND(404, "CLUB-404-1", "Club Not Found"),
 
+    CLUB_MANAGER_NOT_FOUND(404, "CLUBMANAGER-404-1", "Club Manager Not Found"),
+
     FORBIDDEN(403, "COMMON-403-1", "Forbidden"),
     INTERNAL_SERVER_ERROR(500, "SERVER-500-1", "Internal Server Error");
 

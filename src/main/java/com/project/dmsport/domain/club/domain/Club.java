@@ -40,7 +40,7 @@ public class Club {
         this.hope = false;
     }
 
-    public void stopClub(LocalDate banPeriod) {
+    public void ban(LocalDate banPeriod) {
         this.ban = true;
         this.banPeriod = banPeriod;
     }
