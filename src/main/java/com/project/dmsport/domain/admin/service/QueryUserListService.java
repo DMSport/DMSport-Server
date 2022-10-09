@@ -15,8 +15,9 @@ public class QueryUserListService {
 
     public List<UserListResponse> execute() {
 
-        return userRepository.findAllOrderByIdDesc().stream().map
-                (user-> UserListResponse.builder()
+        return userRepository.findAllOrderByIdDesc()
+                .stream()
+                .map(user-> UserListResponse.builder()
                                 .id(user.getId())
                                 .name(user.getName())
                                 .authority(user.getAuthority())
