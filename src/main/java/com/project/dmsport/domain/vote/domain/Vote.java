@@ -48,4 +48,12 @@ public class Vote {
         this.complete = complete;
     }
 
+    public void plusCount() {
+        this.count += 1;
+    }
+
+    public void minusCount() {
+        this.count -= 1;
+    }
+
 }

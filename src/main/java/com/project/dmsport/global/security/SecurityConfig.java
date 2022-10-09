@@ -63,6 +63,10 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.PATCH, "/admin/users/manager/{user-id}").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.GET, "/admin/users").hasAnyAuthority("ADMIN")
 
+                .antMatchers(HttpMethod.GET, "/clubs/vote").authenticated()
+                .antMatchers(HttpMethod.GET, "/clubs/vote/history").authenticated()
+                .antMatchers(HttpMethod.POST, "/clubs/vote/{vote-id}").authenticated()
+
                 .anyRequest().authenticated()
 
                 .and()
