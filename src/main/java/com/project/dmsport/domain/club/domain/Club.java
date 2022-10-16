@@ -45,4 +45,9 @@ public class Club {
         this.banPeriod = banPeriod;
     }
 
+    public Club restoreBan() {
+        this.ban = false;
+        return this;
+    }
+
 }
