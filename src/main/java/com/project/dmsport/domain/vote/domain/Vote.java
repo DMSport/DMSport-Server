@@ -1,5 +1,6 @@
 package com.project.dmsport.domain.vote.domain;
 
+import com.project.dmsport.domain.club.domain.enums.ClubType;
 import com.project.dmsport.domain.vote.domain.enums.VoteType;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -25,6 +26,10 @@ public class Vote {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 10)
+    private ClubType clubType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 10)
     private VoteType voteType;
 
     @NotNull
@@ -41,11 +46,12 @@ public class Vote {
     private List<VoteUser> voteUsers;
 
     @Builder
-    public Vote(VoteType voteType, Integer count, boolean complete) {
+    public Vote(ClubType clubType, VoteType voteType) {
+        this.clubType = clubType;
         this.voteType = voteType;
-        this.count = count;
+        this.count = 0;
         this.voteDate = LocalDate.now();
-        this.complete = complete;
+        this.complete = true;
     }
 
     public void plusCount() {
