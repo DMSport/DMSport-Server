@@ -7,23 +7,23 @@ import com.project.dmsport.domain.vote.domain.Vote;
 import com.project.dmsport.domain.vote.domain.enums.VoteType;
 import com.project.dmsport.domain.vote.domain.repository.VoteRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
-@Slf4j
+@Component
 public class VoteScheduler {
 
     private final VoteRepository voteRepository;
     private final ClubRepository clubRepository;
 
-    @Scheduled(fixedDelay = 10 * 1000)
-    public void schedule() {
-        log.info("씨발");
+    @Scheduled(cron = "0 0 8 * * MON-FRI")
+    public void generateVote() {
+
         List<Club> clubList = clubRepository.findAll()
                 .stream()
                 .filter(this::checkClubActivity)
@@ -38,7 +38,10 @@ public class VoteScheduler {
     }
 
     private boolean checkClubActivity(Club club) {
-        return club.getBanPeriod().isBefore(LocalDate.now());
+        if(club.getBanPeriod() != null) {
+            return club.getBanPeriod().isBefore(LocalDate.now());
+        }
+        return true;
     }
 
     private void generateLunchVote(ClubType clubType) {
