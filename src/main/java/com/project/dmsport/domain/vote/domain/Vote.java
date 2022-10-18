@@ -62,4 +62,9 @@ public class Vote {
         this.count -= 1;
     }
 
+    public Vote closeVote() {
+        this.complete = false;
+        return this;
+    }
+
 }
