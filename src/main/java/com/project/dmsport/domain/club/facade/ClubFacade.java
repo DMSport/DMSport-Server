@@ -14,8 +14,8 @@ public class ClubFacade {
 
     private final ClubRepository clubRepository;
 
-    public Club getClubByClubType(ClubType clubType) {
-        return clubRepository.findByClubType(clubType)
+    public Club getClubById(ClubType clubType) {
+        return clubRepository.findById(clubType)
                 .orElseThrow(() -> ClubNotFoundException.EXCEPTION);
     }
 

@@ -6,8 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface ClubRepository extends CrudRepository<Club, Long> {
-
-    Optional<Club> findByClubType(ClubType clubType);
-
+public interface ClubRepository extends CrudRepository<Club, ClubType> {
 }
