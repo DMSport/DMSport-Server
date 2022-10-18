@@ -12,14 +12,9 @@ import java.time.LocalDate;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Club {
-
     @Id
-    @Column(name = "club_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 10)
+    @Column(name = "club_type", nullable = false, length = 10)
     private ClubType clubType;
 
     private LocalDate banPeriod;
