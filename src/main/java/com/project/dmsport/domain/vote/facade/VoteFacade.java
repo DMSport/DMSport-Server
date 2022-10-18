@@ -17,4 +17,10 @@ public class VoteFacade {
                 .orElseThrow(() -> VoteNotFound.EXCEPTION);
     }
 
+    public void checkComplete(Vote vote) {
+        if(!vote.isComplete()) {
+            throw VoteNotFound.EXCEPTION;
+        }
+    }
+
 }
