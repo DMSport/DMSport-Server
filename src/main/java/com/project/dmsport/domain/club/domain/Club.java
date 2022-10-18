@@ -15,7 +15,7 @@ public class Club {
     @Id
     @Enumerated(EnumType.STRING)
     @Column(name = "club_type", nullable = false, length = 10)
-    private ClubType clubType;
+    private ClubType id;
 
     private LocalDate banPeriod;
 
@@ -30,7 +30,7 @@ public class Club {
 
     @Builder
     public Club(ClubType clubType) {
-        this.clubType = clubType;
+        this.id = clubType;
         this.ban = false;
         this.hope = false;
     }

@@ -28,7 +28,7 @@ public class ChangeClubManagerService {
         ClubType clubType = request.getClubType();
 
         User newManagerUser = userFacade.getUserById(userId);
-        Club club = clubFacade.getClubByClubType(clubType);
+        Club club = clubFacade.getClubById(clubType);
 
         ClubManager clubManager = clubManagerRepository.findById(club.getId())
                 .orElseThrow(() -> ClubManagerNotFoundException.EXCEPTION);
