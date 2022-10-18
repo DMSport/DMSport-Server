@@ -51,7 +51,7 @@ public class Vote {
         this.voteType = voteType;
         this.count = 0;
         this.voteDate = LocalDate.now();
-        this.complete = true;
+        this.complete = false;
     }
 
     public void plusCount() {
@@ -63,7 +63,7 @@ public class Vote {
     }
 
     public Vote closeVote() {
-        this.complete = false;
+        this.complete = true;
         return this;
     }
 
