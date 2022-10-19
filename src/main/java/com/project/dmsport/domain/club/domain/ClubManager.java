@@ -14,12 +14,12 @@ import javax.persistence.*;
 public class ClubManager {
 
     @Id
-    @Column(name = "club")
+    @Column(name = "club_type")
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    @JoinColumn(name = "club_id", nullable = false)
+    @JoinColumn(name = "club_type", nullable = false)
     private Club club;
 
     @OneToOne(fetch = FetchType.LAZY)

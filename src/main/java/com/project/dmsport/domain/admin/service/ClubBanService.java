@@ -23,7 +23,7 @@ public class ClubBanService {
         ClubType clubType = request.getClubType();
         LocalDate banPeriod = request.getBanPeriod();
 
-        Club club = clubFacade.getClubByClubType(clubType);
+        Club club = clubFacade.getClubById(clubType);
 
         club.ban(banPeriod);
         
