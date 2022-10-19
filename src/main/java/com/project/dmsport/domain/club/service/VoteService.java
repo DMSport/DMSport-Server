@@ -25,6 +25,8 @@ public class VoteService {
         User user = userFacade.getCurrentUser();
         Vote vote = voteFacade.getVoteById(voteId);
 
+        voteFacade.checkComplete(vote);
+
         if(voteUserRepository.findByVoteAndUser(vote, user).isPresent()) {
             cancelVote(vote, user);
         }else {
