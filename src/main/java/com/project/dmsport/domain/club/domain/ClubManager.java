@@ -1,5 +1,6 @@
 package com.project.dmsport.domain.club.domain;
 
+import com.project.dmsport.domain.club.domain.enums.ClubType;
 import com.project.dmsport.domain.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -14,12 +15,12 @@ import javax.persistence.*;
 public class ClubManager {
 
     @Id
-    @Column(name = "club_type")
-    private Long id;
+    @Column(name = "club_id")
+    private ClubType id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    @JoinColumn(name = "club_type", nullable = false)
+    @JoinColumn(name = "club_id", nullable = false)
     private Club club;
 
     @OneToOne(fetch = FetchType.LAZY)

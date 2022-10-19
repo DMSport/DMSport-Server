@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Club {
     @Id
     @Enumerated(EnumType.STRING)
-    @Column(name = "club_type", nullable = false, length = 10)
+    @Column(name = "club_id", nullable = false, length = 10)
     private ClubType id;
 
     private LocalDate banPeriod;
