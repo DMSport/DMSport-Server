@@ -6,15 +6,12 @@
     <title>이메일 인증</title>
     <link href='https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
     <style type="text/css" rel="stylesheet" media="all">
-        /* Base ------------------------------ */
         *:not(br):not(tr):not(html) {
             font-family: 'spoqa han sans neo', Helvetica, sans-serif;
             -webkit-box-sizing: border-box;
             box-sizing: border-box;
         }
         body {
-            width: 100% !important;
-            height: 100%;
             margin: 0;
             line-height: 1.4;
             background-color: #F5F7F9;
@@ -27,13 +24,11 @@
 
         /* Layout ------------------------------ */
         .email-wrapper {
-            width: 100%;
             margin: 0;
             padding: 0;
             background-color: #F5F7F9;
         }
         .email-content {
-            width: 100%;
             margin: 0;
             padding: 0;
         }
@@ -54,10 +49,7 @@
             text-decoration: none;
             text-shadow: 0 1px 0 white;
         }
-
-        /* Body ------------------------------ */
         .email-body {
-            width: 100%;
             margin: 0;
             padding: 0;
             border-top: 1px solid #E7EAEC;
@@ -79,7 +71,6 @@
             color: #888888;
         }
         .body-action {
-            width: 100%;
             margin: 30px auto;
             padding: 0;
             text-align: center;
@@ -131,41 +122,28 @@
         p.center {
             text-align: center;
         }
-
-        /*Media Queries ------------------------------ */
-        @media only screen and (max-width: 600px) {
-            .email-body_inner,
-            .email-footer {
-                width: 100% !important;
-            }
-        }
-        @media only screen and (max-width: 500px) {
-            .button {
-                width: 100% !important;
-            }
-        }
     </style>
 </head>
 <body>
-<table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0">
+<table class="email-wrapper" width="100%%" style="margin: auto;" cellpadding="0" cellspacing="0">
     <tr>
         <td align="center">
-            <table class="email-content" width="100%" cellpadding="0" cellspacing="0">
+            <table class="email-content" width="100%%" style="margin: auto;" cellpadding="0" cellspacing="0">
                 <tr>
                     <td class="email-masthead">
                     </td>
                 </tr>
                 <tr>
-                    <td class="email-body" width="100%">
-                        <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0">
+                    <td class="email-body">
+                        <table class="email-body_inner" align="center" width="100%%" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="content-cell">
-                                    <img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c08b9282-dd59-47a7-a30c-abc470122f0b/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220929%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220929T055423Z&X-Amz-Expires=86400&X-Amz-Signature=438f60ad040a95b283e8266dca9d08efd1002f8a871edaf6c824e3f07551f684&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject" height="40px">
+                                    <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/309844992_641286460693339_7765925928581853977_n.png?stp=dst-png_p206x206&_nc_cat=109&ccb=1-7&_nc_sid=aee45a&_nc_ohc=RDzGmoK4tC4AX_UvitV&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdSwYGhICl3MXPiStlYiOmxjWKyN_siNIucOdp-a4tiSmw&oe=63760076" height="80px">
                                     <hr color="#80CCE3">
                                     <h1><br/>이메일 인증</h1>
-                                    DMSport를 이용해주셔서 감사합니다!<br/>아래 인증코드를 입력하여 회원가입하세요.</p>
+                                    DMSport를 이용해주셔서 감사합니다!<br/>아래 코드를 입력하여 메일 인증을 완료하세요.</p>
                                     <!-- Action -->
-                                    <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
+                                    <table class="body-action" align="center" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td align="center">
                                                 <div>
