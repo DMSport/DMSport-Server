@@ -32,8 +32,8 @@ public class VoteScheduler {
                 .collect(Collectors.toList());
 
         for(Club club : clubList) {
-            generateLunchVote(club.getClubType());
-            generateDinnerVote(club.getClubType());
+            generateLunchVote(club.getId());
+            generateDinnerVote(club.getId());
         }
     }
 
