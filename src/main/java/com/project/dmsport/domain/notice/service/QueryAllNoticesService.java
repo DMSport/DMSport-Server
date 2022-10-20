@@ -21,7 +21,7 @@ public class QueryAllNoticesService {
     @Transactional(readOnly = true)
     public QueryAllNoticesResponse execute() {
         User user = userFacade.getCurrentUser();
-        List<NoticeResponse> notice = noticeRepository.findAll()
+        List<NoticeResponse> notice = noticeRepository.findAllByOrderByCreatedDateDesc()
                 .stream().map(
                         n -> NoticeResponse.builder()
                                 .id(n.getId())

@@ -9,5 +9,4 @@ import lombok.NoArgsConstructor;
 public class CreateNoticeRequest {
     private String title;
     private String content;
-    private NoticeType type;
 }
