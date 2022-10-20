@@ -8,12 +8,11 @@ import java.util.List;
 
 public interface VoteRepository extends JpaRepository<Vote, Long> {
 
-    Vote findAllByCompleteFalse(Vote vote);
+    @Query("select v from Vote v where v.voteType = 'LUNCH' and v.complete = false")
+    List<Vote> findAllByVoteTypeLunchAndCompleteFalse();
 
-    @Query("select v from Vote v where v.voteType = 'LUNCH' ")
-    List<Vote> findAllByVoteTypeLunch();
+    @Query("select v from Vote v where v.voteType = 'DINNER' and v.complete = false")
+    List<Vote> findAllByVoteTypeDinnerAndCompleteFalse();
 
-    @Query("select v from Vote v where v.voteType = 'DINNER' ")
-    List<Vote> findAllByVoteTypeDinner();
 
 }

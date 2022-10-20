@@ -17,9 +17,8 @@ public class CloseVoteScheduler {
     @Scheduled(cron = "0 50 12 * * MON-FRI")
     public void closeLunchVote() {
 
-        voteRepository.findAllByVoteTypeLunch()
+        voteRepository.findAllByVoteTypeLunchAndCompleteFalse()
                 .stream()
-                .map(voteRepository::findAllByCompleteFalse)
                 .map(Vote::closeVote)
                 .map(voteRepository::save)
                 .collect(Collectors.toList());
@@ -28,9 +27,8 @@ public class CloseVoteScheduler {
     @Scheduled(cron = "0 50 17 * * MON-FRI")
     public void closeDinnerVote() {
 
-        voteRepository.findAllByVoteTypeDinner()
+        voteRepository.findAllByVoteTypeDinnerAndCompleteFalse()
                 .stream()
-                .map(voteRepository::findAllByCompleteFalse)
                 .map(Vote::closeVote)
                 .map(voteRepository::save)
                 .collect(Collectors.toList());
