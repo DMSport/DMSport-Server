@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @DynamicInsert
@@ -20,14 +22,15 @@ public class Notice extends BaseTimeEntity {
     @Column(name = "notice_id")
     private Long id;
 
-    @Column(nullable = false, length = 20)
+    @NotNull
+    @Size(max = 20)
     private String title;
 
-    @Column(nullable = false)
+    @NotNull
     private String content;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 10)
+    @NotNull
     private NoticeType noticeType;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -40,5 +43,10 @@ public class Notice extends BaseTimeEntity {
         this.content = content;
         this.noticeType = noticeType;
         this.user = user;
+    }
+
+    public void modifyNotice(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }
