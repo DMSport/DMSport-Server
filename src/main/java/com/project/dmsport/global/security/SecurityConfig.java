@@ -57,6 +57,7 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, "/notice/club").hasAuthority("MANAGER")
                 .antMatchers(HttpMethod.POST, "/notice/all").hasAuthority("ADMIN")
 
+                .antMatchers(HttpMethod.POST, "/admin/club").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.PATCH, "/admin/ban").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.PATCH, "/admin/users/manager/{user-id}").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.GET, "/admin/users").hasAnyAuthority("ADMIN")
