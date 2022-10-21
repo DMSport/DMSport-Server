@@ -33,6 +33,8 @@ public enum ErrorCode {
 
     CLUB_MANAGER_NOT_FOUND(404, "CLUBMANAGER-404-1", "Club Manager Not Found"),
 
+    CLUB_SCHEDULE_ALREADY_EXISTS(409, "CLUBSCHEDULE-409-1", "Club Schedule Already Exists"),
+
     VOTE_NOT_FOUND(404, "VOTE-404-1", "Vote Not Found"),
 
     FORBIDDEN(403, "COMMON-403-1", "Forbidden"),
