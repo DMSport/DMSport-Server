@@ -31,6 +31,7 @@ public class CreateNoticeService {
                         .title(title)
                         .content(content)
                         .noticeType(type)
+                        .user(user)
                         .build()
         );
     }
