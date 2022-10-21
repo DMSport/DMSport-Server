@@ -28,7 +28,7 @@ public class AssignClubDayService {
         DayOfWeek dayOfWeek = request.getDayOfWeek();
         VoteType voteType = request.getVoteType();
 
-        clubFacade.isAlreadyExists(activityPlace, dayOfWeek, voteType);
+        clubFacade.checkScheduleExists(activityPlace, dayOfWeek, voteType);
 
         clubScheduleRepository.save(ClubSchedule.builder()
                 .activityPlace(request.getActivityPlace())

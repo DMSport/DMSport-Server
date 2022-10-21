@@ -31,7 +31,7 @@ public class ClubFacade {
         return Authority.valueOf(authority);
     }
 
-    public void isAlreadyExists(ActivityPlace activityPlace, DayOfWeek dayOfWeek, VoteType voteType) {
+    public void checkScheduleExists(ActivityPlace activityPlace, DayOfWeek dayOfWeek, VoteType voteType) {
         if(clubScheduleRepository.existsByActivityPlaceAndDayOfWeekAndVoteType(activityPlace,dayOfWeek,voteType)) {
             throw ClubScheduleAlreadyExistException.EXCEPTION;
         }
