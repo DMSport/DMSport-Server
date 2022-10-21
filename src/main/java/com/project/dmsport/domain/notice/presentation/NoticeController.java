@@ -33,4 +33,10 @@ public class NoticeController {
     public void createNotice(@RequestParam NoticeType type, @RequestBody CreateNoticeRequest request) {
         createNoticeService.execute(request, type);
     }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PatchMapping("/{notice-id}")
+    public void modifyNotice(@RequestParam("notice-id") Long noticeId) {
+
+    }
 }

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Builder
@@ -13,5 +14,5 @@ public class QueryNoticeDetailResponse {
     private final String content;
     private final String writer;
     private final NoticeType type;
-    private final LocalDate createdAt;
+    private final LocalDateTime createdAt;
 }
