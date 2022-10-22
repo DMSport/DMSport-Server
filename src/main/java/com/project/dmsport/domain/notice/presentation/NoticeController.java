@@ -1,14 +1,10 @@
 package com.project.dmsport.domain.notice.presentation;
 
-import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import com.project.dmsport.domain.notice.presentation.dto.request.CreateNoticeRequest;
 import com.project.dmsport.domain.notice.presentation.dto.request.ModifyNoticeRequest;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryAllNoticesResponse;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryNoticeDetailResponse;
-import com.project.dmsport.domain.notice.service.CreateNoticeService;
-import com.project.dmsport.domain.notice.service.ModifyNoticeService;
-import com.project.dmsport.domain.notice.service.QueryAllNoticesService;
-import com.project.dmsport.domain.notice.service.QueryNoticeDetailService;
+import com.project.dmsport.domain.notice.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +17,9 @@ import javax.validation.Valid;
 public class NoticeController {
     private final QueryAllNoticesService queryAllNoticesService;
     private final QueryNoticeDetailService queryNoticeDetailService;
-    private final CreateNoticeService createNoticeService;
+    private final CreateAdminNoticeService createAdminNoticeService;
     private final ModifyNoticeService modifyNoticeService;
+    private final DeleteNoticeService deleteNoticeService;
     @GetMapping
     public QueryAllNoticesResponse searchNoticeList() {
         return queryAllNoticesService.execute();
@@ -36,7 +33,13 @@ public class NoticeController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/all")
     public void createAdminNotice(@Valid @RequestBody CreateNoticeRequest request) {
-        createNoticeService.execute(request);
+        createAdminNoticeService.execute(request);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/club")
+    public void createClubNotice(@Valid @RequestBody CreateNoticeRequest request) {
+
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -48,6 +51,6 @@ public class NoticeController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{notice-id}")
     public void deleteNotice(@PathVariable("notice-id") Long noticeId) {
-
+        deleteNoticeService.execute(noticeId);
     }
 }
