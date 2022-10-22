@@ -1,5 +1,6 @@
 package com.project.dmsport.domain.notice.presentation;
 
+import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import com.project.dmsport.domain.notice.presentation.dto.request.CreateNoticeRequest;
 import com.project.dmsport.domain.notice.presentation.dto.request.ModifyNoticeRequest;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryAllNoticesResponse;
@@ -32,8 +33,8 @@ public class NoticeController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/all")
-    public void createAdminNotice(@Valid @RequestBody CreateNoticeRequest request) {
-        createAdminNoticeService.execute(request);
+    public void createAdminNotice(@Valid @RequestBody CreateNoticeRequest request, @RequestParam NoticeType type) {
+        createAdminNoticeService.execute(request, type);
     }
 
     @ResponseStatus(HttpStatus.CREATED)

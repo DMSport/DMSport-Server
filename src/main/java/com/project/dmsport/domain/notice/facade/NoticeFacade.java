@@ -27,6 +27,8 @@ public class NoticeFacade {
                 return NoticeType.BASKETBALL;
             case SOCCER_MANAGER:
                 return NoticeType.SOCCER;
+            case VOLLEYBALL_MANAGER:
+                return NoticeType.VOLLEYBALL;
         }
         throw InvalidAuthorityException.EXCEPTION;
     }

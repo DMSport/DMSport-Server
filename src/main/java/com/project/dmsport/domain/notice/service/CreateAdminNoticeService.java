@@ -16,13 +16,13 @@ public class CreateAdminNoticeService {
     private final NoticeRepository noticeRepository;
     private final UserFacade userFacade;
     @Transactional
-    public void execute(CreateNoticeRequest request) {
+    public void execute(CreateNoticeRequest request, NoticeType type) {
         User user = userFacade.getCurrentUser();
         noticeRepository.save(
                 Notice.builder()
                         .title(request.getTitle())
                         .content(request.getContent())
-                        .noticeType(NoticeType.ALL)
+                        .noticeType(type)
                         .user(user)
                         .build()
         );

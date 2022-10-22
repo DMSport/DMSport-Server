@@ -1,10 +1,11 @@
 package com.project.dmsport.domain.notice.service;
 
 import com.project.dmsport.domain.notice.domain.Notice;
-import com.project.dmsport.domain.notice.exception.NoAuthorityException;
+import com.project.dmsport.domain.notice.exception.InvalidAuthorityException;
 import com.project.dmsport.domain.notice.facade.NoticeFacade;
 import com.project.dmsport.domain.notice.presentation.dto.request.ModifyNoticeRequest;
 import com.project.dmsport.domain.user.domain.User;
+import com.project.dmsport.domain.user.domain.enums.Authority;
 import com.project.dmsport.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,11 +21,9 @@ public class ModifyNoticeService {
     public void execute(ModifyNoticeRequest request, Long noticeId) {
         User user = userFacade.getCurrentUser();
         Notice notice = noticeFacade.findNoticeById(noticeId);
-        if(!user.getEmail().equals(notice.getUser().getEmail())) {
-            throw NoAuthorityException.EXCEPTION;
+        if(!user.equals(notice.getUser()) && !user.getAuthority().equals(Authority.ADMIN)) {
+            throw InvalidAuthorityException.EXCEPTION;
         }
-        String title = request.getTitle();
-        String content = request.getContent();
-        notice.modifyNotice(title, content);
+        notice.modifyNotice(request.getTitle(), request.getContent());
     }
 }
