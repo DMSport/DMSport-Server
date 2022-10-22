@@ -19,6 +19,7 @@ public class NoticeController {
     private final QueryAllNoticesService queryAllNoticesService;
     private final QueryNoticeDetailService queryNoticeDetailService;
     private final CreateAdminNoticeService createAdminNoticeService;
+    private final CreateClubNoticeService createClubNoticeService;
     private final ModifyNoticeService modifyNoticeService;
     private final DeleteNoticeService deleteNoticeService;
     @GetMapping
@@ -40,7 +41,7 @@ public class NoticeController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/club")
     public void createClubNotice(@Valid @RequestBody CreateNoticeRequest request) {
-
+         createClubNoticeService.execute(request);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
