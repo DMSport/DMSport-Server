@@ -1,5 +1,7 @@
 package com.project.dmsport.domain.notice.service;
 
+import com.project.dmsport.domain.notice.domain.Notice;
+import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import com.project.dmsport.domain.notice.domain.repository.NoticeRepository;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryAllNoticesResponse;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryAllNoticesResponse.NoticeResponse;
@@ -21,17 +23,23 @@ public class QueryAllNoticesService {
     @Transactional(readOnly = true)
     public QueryAllNoticesResponse execute() {
         User user = userFacade.getCurrentUser();
-        List<NoticeResponse> notice = noticeRepository.findAllByOrderByCreatedDateDesc()
-                .stream().map(
+        List<NoticeResponse> notices = noticeRepository.findAllByOrderByCreatedDateDesc()
+                .stream()
+                .map(
                         n -> NoticeResponse.builder()
                                 .id(n.getId())
                                 .title(n.getTitle())
-                                .contentPreview(n.getContent().substring(0,20)+"...")
+                                .contentPreview(generateContent(n))
                                 .type(n.getNoticeType())
                                 .createdAt(n.getCreatedDate())
                                 .build()
                 ).collect(Collectors.toList());
 
-        return new QueryAllNoticesResponse(notice, user.getAuthority());
+        return new QueryAllNoticesResponse(notices, user.getAuthority());
+    }
+
+    private String generateContent(Notice notice) {
+        String content = notice.getContent();
+        return content.length()>20 ? content.substring(0, 20) : content;
     }
 }
