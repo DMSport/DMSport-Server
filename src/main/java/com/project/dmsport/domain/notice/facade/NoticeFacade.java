@@ -19,18 +19,4 @@ public class NoticeFacade {
                 .orElseThrow(() -> NoticeNotFoundException.EXCEPTION);
     }
 
-    public NoticeType defineNoticeType(Authority authority) {
-        switch (authority) {
-            case BADMINTON_MANAGER:
-                return NoticeType.BADMINTON;
-            case BASKETBALL_MANAGER:
-                return NoticeType.BASKETBALL;
-            case SOCCER_MANAGER:
-                return NoticeType.SOCCER;
-            case VOLLEYBALL_MANAGER:
-                return NoticeType.VOLLEYBALL;
-        }
-        throw InvalidAuthorityException.EXCEPTION;
-    }
-
 }

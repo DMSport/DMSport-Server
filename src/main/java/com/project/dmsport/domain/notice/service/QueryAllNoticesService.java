@@ -40,6 +40,6 @@ public class QueryAllNoticesService {
 
     private String generateContent(Notice notice) {
         String content = notice.getContent();
-        return content.length()>20 ? content.substring(0, 20) : content;
+        return content.length() > 20 ? content.substring(0, 20) : content;
     }
 }

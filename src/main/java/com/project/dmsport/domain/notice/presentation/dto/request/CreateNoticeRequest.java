@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class CreateNoticeRequest {
     @NotEmpty(message = "title은 공백이 혀용되지 않습니다.")
-    @Size(max = 20, message = "title은 20자를 넘겨선 안됩니다.")
+    @Size(max = 20, message = "title은 20자 이하여야합니다.")
     private String title;
 
     @NotEmpty(message = "content는 공백이 허용되지 않습니다.")
