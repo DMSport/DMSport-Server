@@ -24,7 +24,6 @@ public class QueryAllNoticesResponse {
         private final String title;
         private final String contentPreview;
         private final NoticeType type;
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
         private final LocalDateTime createdAt;
     }
 }

@@ -1,8 +1,11 @@
 package com.project.dmsport.domain.notice.facade;
 
 import com.project.dmsport.domain.notice.domain.Notice;
+import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import com.project.dmsport.domain.notice.domain.repository.NoticeRepository;
+import com.project.dmsport.domain.notice.exception.InvalidAuthorityException;
 import com.project.dmsport.domain.notice.exception.NoticeNotFoundException;
+import com.project.dmsport.domain.user.domain.enums.Authority;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

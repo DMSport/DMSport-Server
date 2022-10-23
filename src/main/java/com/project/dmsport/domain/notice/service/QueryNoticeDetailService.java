@@ -21,7 +21,7 @@ public class QueryNoticeDetailService {
                 .content(notice.getContent())
                 .type(notice.getNoticeType())
                 .writer(notice.getUser().getName())
-                .createdAt(notice.getCreatedDate().toLocalDate())
+                .createdAt(notice.getCreatedDate())
                 .build();
     }
 }
