@@ -18,7 +18,7 @@ public class VoteFacade {
     }
 
     public void checkComplete(Vote vote) {
-        if(!vote.isComplete()) {
+        if(vote.isComplete()) {
             throw VoteNotFound.EXCEPTION;
         }
     }
