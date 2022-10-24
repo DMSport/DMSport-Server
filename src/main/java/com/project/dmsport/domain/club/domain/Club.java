@@ -25,6 +25,9 @@ public class Club {
     @Column(nullable = false)
     private boolean hope;
 
+    @Column(columnDefinition = "TINYINT", nullable = false)
+    private Integer maxPeople;
+
     @OneToOne(mappedBy = "club")
     private ClubManager clubManager;
 
