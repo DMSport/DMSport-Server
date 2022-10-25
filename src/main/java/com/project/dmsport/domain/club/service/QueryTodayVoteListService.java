@@ -30,7 +30,7 @@ public class QueryTodayVoteListService {
                 .stream()
                 .map(vote -> VoteResponse.builder()
                         .voteId(vote.getId())
-                        .voteType(vote.getVoteType())
+                        .time(vote.getVoteType())
                         .voteCount(vote.getCount())
                         .build())
                 .collect(Collectors.toList());
