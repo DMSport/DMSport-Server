@@ -1,5 +1,6 @@
 package com.project.dmsport.domain.auth.presentation.dto.response;
 
+import com.project.dmsport.domain.user.domain.enums.Authority;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,5 +17,7 @@ public class TokenResponse {
     private final LocalDateTime expiredAt;
 
     private final String refreshToken;
+
+    private final Authority authority;
 
 }
