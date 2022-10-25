@@ -33,7 +33,7 @@ public class NoticeController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/all")
+    @PostMapping("/admin")
     public void createAdminNotice(@Valid @RequestBody CreateNoticeRequest request, @RequestParam NoticeType type) {
         createAdminNoticeService.execute(request, type);
     }
