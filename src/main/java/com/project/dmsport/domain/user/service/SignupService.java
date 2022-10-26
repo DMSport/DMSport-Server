@@ -41,7 +41,7 @@ public class SignupService {
 
         authCodeFacade.checkIsVerified(email);
 
-        userRepository.save(User
+        User user = userRepository.save(User
                 .builder()
                 .name(name)
                 .email(email)
@@ -58,6 +58,7 @@ public class SignupService {
                 .accessToken(accessToken)
                 .expiredAt(LocalDateTime.now().plusSeconds(jwtProperties.getAccessExp()))
                 .refreshToken(refreshToken)
+                .authority(user.getAuthority())
                 .build();
     }
 }

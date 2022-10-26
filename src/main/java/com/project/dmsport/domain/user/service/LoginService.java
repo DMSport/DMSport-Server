@@ -40,6 +40,7 @@ public class LoginService {
                 .accessToken(accessToken)
                 .expiredAt(LocalDateTime.now().plusSeconds(jwtProperties.getAccessExp()))
                 .refreshToken(refreshToken)
+                .authority(user.getAuthority())
                 .build();
     }
 }

@@ -1,7 +1,6 @@
 package com.project.dmsport.domain.notice.service;
 
 import com.project.dmsport.domain.notice.domain.Notice;
-import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import com.project.dmsport.domain.notice.domain.repository.NoticeRepository;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryAllNoticesResponse;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryAllNoticesResponse.NoticeResponse;
@@ -35,7 +34,7 @@ public class QueryAllNoticesService {
                                 .build()
                 ).collect(Collectors.toList());
 
-        return new QueryAllNoticesResponse(notices, user.getAuthority());
+        return new QueryAllNoticesResponse(notices);
     }
 
     private String generateContent(Notice notice) {
