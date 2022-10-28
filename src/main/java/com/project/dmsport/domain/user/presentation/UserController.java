@@ -32,7 +32,7 @@ public class UserController {
 
     private final UpdatePasswordService updatePasswordService;
 
-    private final SendAuthCodeService sendAuthCodeService;
+    private final SendPasswordFindCodeService sendPasswordCodeService;
     private final FindPasswordService findPasswordService;
 
     private final LogoutService logoutService;
@@ -81,9 +81,9 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PostMapping("/mail")
-    public void sendAuthCodeService(@RequestBody @Valid SendAuthCodeRequest request){
-        sendAuthCodeService.execute(request);
+    @PostMapping("/mail/find")
+    public void sendPasswordFindCodeService(@RequestBody @Valid SendAuthCodeRequest request){
+        sendPasswordCodeService.execute(request);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)

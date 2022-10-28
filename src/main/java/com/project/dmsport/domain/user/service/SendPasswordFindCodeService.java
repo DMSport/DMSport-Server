@@ -7,16 +7,14 @@ import com.project.dmsport.domain.user.presentation.dto.request.SendAuthCodeRequ
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
-
 @RequiredArgsConstructor
 @Service
-public class SendAuthCodeService {
+public class SendPasswordFindCodeService {
 
     private final AuthCodeFacade authCodeFacade;
     private final UserFacade userFacade;
 
-    public void execute(@Valid SendAuthCodeRequest request) {
+    public void execute(SendAuthCodeRequest request) {
 
         String email = request.getEmail();
 
