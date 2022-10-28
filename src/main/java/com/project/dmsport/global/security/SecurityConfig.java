@@ -53,6 +53,8 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, "/users").permitAll()
                 .antMatchers(HttpMethod.POST, "/users/auth").permitAll()
                 .antMatchers(HttpMethod.PUT, "/users/auth").permitAll()
+                .antMatchers(HttpMethod.POST, "/users/password").permitAll()
+                .antMatchers(HttpMethod.POST, "/mail/find").permitAll()
 
                 .antMatchers(HttpMethod.POST, "/notices/club").hasAnyAuthority(
                         "BASKETBALL_MANAGER", "VOLLEYBALL_MANAGER", "BADMINTON_MANAGER", "SOCCER_MANAGER")
