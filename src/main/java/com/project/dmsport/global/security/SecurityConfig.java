@@ -69,6 +69,8 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.GET, "/clubs/vote").authenticated()
                 .antMatchers(HttpMethod.GET, "/clubs/vote/history").authenticated()
                 .antMatchers(HttpMethod.POST, "/clubs/vote/{vote-id}").authenticated()
+                .antMatchers(HttpMethod.POST, "/clubs/schedule/hope").hasAnyAuthority(
+                        "BASKETBALL_MANAGER", "VOLLEYBALL_MANAGER", "BADMINTON_MANAGER", "SOCCER_MANAGER")
 
                 .anyRequest().authenticated()
 
