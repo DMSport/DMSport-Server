@@ -1,4 +1,4 @@
-package com.project.dmsport.domain.club.presentation.request.response;
+package com.project.dmsport.domain.club.presentation.response;
 
 import com.project.dmsport.domain.vote.domain.enums.VoteType;
 import lombok.Builder;

@@ -1,7 +1,8 @@
 package com.project.dmsport.domain.club.presentation;
 
 import com.project.dmsport.domain.club.domain.enums.ClubType;
-import com.project.dmsport.domain.club.presentation.request.response.QueryTodayVoteListResponse;
+import com.project.dmsport.domain.club.presentation.response.QueryTodayVoteListResponse;
+import com.project.dmsport.domain.club.service.AssignOutOfScheduleService;
 import com.project.dmsport.domain.club.service.QueryTodayVoteListService;
 import com.project.dmsport.domain.club.service.VoteService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class ClubController {
 
     private final VoteService voteService;
     private final QueryTodayVoteListService queryTodayVoteListService;
+    private final AssignOutOfScheduleService assignOutOfScheduleService;
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PostMapping("/vote/{vote-id}")
@@ -29,6 +31,12 @@ public class ClubController {
     public QueryTodayVoteListResponse getVote(@RequestParam(value = "type") ClubType clubType,
                                               @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         return queryTodayVoteListService.execute(clubType, date);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PostMapping("/schedule/hope")
+    public void outOfSchedule() {
+        assignOutOfScheduleService.execute();
     }
 
 }

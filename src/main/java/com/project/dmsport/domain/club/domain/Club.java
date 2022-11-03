@@ -48,4 +48,8 @@ public class Club {
         return this;
     }
 
+    public void toggleHope() {
+        this.hope = !this.hope;
+    }
+
 }
