@@ -21,12 +21,6 @@ public class VoteFacade {
                 .orElseThrow(() -> VoteNotFound.EXCEPTION);
     }
 
-    public void checkComplete(Vote vote) {
-        if(vote.isComplete()) {
-            throw VoteNotFound.EXCEPTION;
-        }
-    }
-
     public List<Vote> getVoteListByClubTypeAndDate(ClubType clubType, LocalDate date) {
         return voteRepository.findAllByClubTypeAndVoteDateEquals(clubType, date);
     }

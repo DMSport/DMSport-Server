@@ -17,27 +17,28 @@ import java.time.DayOfWeek;
         uniqueConstraints = {
                 @UniqueConstraint(
                         name = "club_schedule_unique_constraint",
-                        columnNames = {"activity_place", "day_of_week", "vote_type", "club_id"}
+                        columnNames = {"activity_place", "day_of_week", "vote_type"}
                 )
         }
 )
 @DynamicInsert
 @Entity
 public class ClubSchedule {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "schedule_id")
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "activity_place", length = 10)
+    @Column(length = 10)
     private ActivityPlace activityPlace;
 
-    @Enumerated
-    @Column(name = "day_of_week")
+    @Enumerated(value = EnumType.ORDINAL)
+    @Column
     private DayOfWeek dayOfWeek;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 10, name = "vote_type")
+    @Column(name = "vote_type")
     private VoteType voteType;
 
     @ManyToOne(fetch = FetchType.LAZY)

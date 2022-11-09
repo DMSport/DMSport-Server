@@ -5,19 +5,16 @@ import com.project.dmsport.domain.user.domain.repository.AuthCodeRepository;
 import com.project.dmsport.domain.user.exception.BadAuthCodeException;
 import com.project.dmsport.domain.user.exception.BadEmailException;
 import com.project.dmsport.domain.user.exception.UnverifiedEmailException;
+import com.project.dmsport.global.util.RandomUtil;
 import com.project.dmsport.global.util.RegexpProperty;
 import com.project.dmsport.global.util.jms.JmsProperties;
 import com.project.dmsport.global.util.jms.JmsUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.Random;
-
 @RequiredArgsConstructor
 @Component
 public class AuthCodeFacade {
-
-    public static final Random RANDOM = new Random();
 
     private final AuthCodeRepository authCodeRepository;
     private final JmsUtil jmsUtil;
@@ -47,7 +44,7 @@ public class AuthCodeFacade {
 
     public void sendMail(String email) {
 
-        String code = createRandomCode();
+        String code = RandomUtil.createRandomCode();
         AuthCode authCode = getAuthCode(email, code);
         authCodeRepository.save(authCode);
 
@@ -72,10 +69,6 @@ public class AuthCodeFacade {
                 .isVerified(false)
                 .ttl(jmsProperties.getAuthExp())
                 .build();
-    }
-
-    private String createRandomCode() {
-        return String.format("%06d", RANDOM.nextInt(1000000) % 1000000);
     }
 
 }

@@ -19,8 +19,10 @@ public class ModifyNoticeService {
 
     @Transactional
     public void execute(ModifyNoticeRequest request, Long noticeId) {
+
         User user = userFacade.getCurrentUser();
         Notice notice = noticeFacade.findNoticeById(noticeId);
+
         if(!user.equals(notice.getUser()) && !user.getAuthority().equals(Authority.ADMIN)) {
             throw InvalidAuthorityException.EXCEPTION;
         }

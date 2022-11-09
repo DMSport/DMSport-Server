@@ -20,8 +20,10 @@ public class DeleteNoticeService {
 
     @Transactional
     public void execute(Long noticeId) {
+
         User user = userFacade.getCurrentUser();
         Notice notice = noticeFacade.findNoticeById(noticeId);
+
         if(!user.equals(notice.getUser()) && !user.getAuthority().equals(Authority.ADMIN)) {
             throw InvalidAuthorityException.EXCEPTION;
         }

@@ -11,11 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class QueryNoticeDetailService {
+
     private final NoticeFacade noticeFacade;
 
     @Transactional(readOnly = true)
     public QueryNoticeDetailResponse execute(Long noticeId) {
+
         Notice notice = noticeFacade.findNoticeById(noticeId);
+
         return QueryNoticeDetailResponse.builder()
                 .title(notice.getTitle())
                 .content(notice.getContent())
