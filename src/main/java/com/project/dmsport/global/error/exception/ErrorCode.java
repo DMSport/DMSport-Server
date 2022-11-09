@@ -17,7 +17,7 @@ public enum ErrorCode {
     REFRESH_TOKEN_NOT_FOUND(404, "AUTH-404-1", "Refresh Token Not Found"),
 
     BAD_EMAIL(400, "USER-400-1", "Bad Email Domain"),
-    BAD_AUTH_CODE(400, "USER-400-2", "Bad Auth Code"),
+    BAD_AUTH_CODE(401, "USER-401-1", "Bad Auth Code"),
 
     UNVERIFIED_EMAIL(401, "USER-401-1", "Unverified Email"),
     PASSWORD_NOT_VALID(403, "USER-403-1", "Password Not Valid"),
