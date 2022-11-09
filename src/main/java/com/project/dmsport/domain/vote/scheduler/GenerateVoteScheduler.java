@@ -39,7 +39,7 @@ public class GenerateVoteScheduler {
             List<Club> activityClubList = clubRepository.findAll()
                     .stream()
                     .filter(c -> c.getPlace() == activityPlace)
-                    .map(Club::checkAndRestoreBan)
+                    .filter(Club::checkAndRestoreBan)
                     .collect(Collectors.toList());
 
             for (VoteType voteType : VoteType.values()) {

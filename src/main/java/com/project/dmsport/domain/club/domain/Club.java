@@ -47,9 +47,12 @@ public class Club {
         this.banPeriod = banPeriod;
     }
 
-    public Club checkAndRestoreBan() {
-        if (banPeriod.isBefore(LocalDate.now())) this.ban = false;
-        return this;
+    public boolean checkAndRestoreBan() {
+        if (banPeriod.isBefore(LocalDate.now())) {
+            this.ban = false;
+            return true;
+        }
+        return !this.ban;
     }
 
     public void toggleHope() {
