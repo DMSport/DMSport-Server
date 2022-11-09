@@ -30,11 +30,11 @@ public class ClubSchedule {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 10)
+    @Column(name = "activity_place", length = 10)
     private ActivityPlace activityPlace;
 
     @Enumerated(value = EnumType.ORDINAL)
-    @Column
+    @Column(name = "day_of_week")
     private DayOfWeek dayOfWeek;
 
     @Enumerated(EnumType.STRING)
