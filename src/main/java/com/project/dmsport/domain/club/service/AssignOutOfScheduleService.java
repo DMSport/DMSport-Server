@@ -17,11 +17,10 @@ public class AssignOutOfScheduleService {
     @Transactional
     public void execute() {
         String auth = userFacade.getCurrentUser().getAuthority().toString();
-//        ClubManager user = clubManagerRepository.findClubManagerByUser(userFacade.getCurrentUser());
-//        Club club = clubFacade.getClubById(user.getId());
-//        club.toggleHope();
+
         Club club = clubFacade.getClubById(
                 ClubType.valueOf(auth.replace("_MANAGER", "")));
+
         club.toggleHope();
     }
 }
