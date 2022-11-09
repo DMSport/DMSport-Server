@@ -1,4 +1,4 @@
-package com.project.dmsport.domain.club.service;
+package com.project.dmsport.domain.vote.service;
 
 import com.project.dmsport.domain.club.domain.Club;
 import com.project.dmsport.domain.club.domain.enums.ClubType;
@@ -28,15 +28,17 @@ public class QueryTodayVoteListService {
 
         List<VoteResponse> voteResponseList = voteFacade.getVoteListByClubTypeAndDate(clubType, date)
                 .stream()
-                .map(vote -> VoteResponse.builder()
+                .map(vote -> VoteResponse
+                        .builder()
                         .voteId(vote.getId())
                         .voteType(vote.getVoteType())
                         .voteCount(vote.getCount())
-                        .build())
+                        .build()
+                )
                 .collect(Collectors.toList());
 
         return QueryTodayVoteListResponse.builder()
-                .isBan(club.isBan())
+                .isBan(club.getBan())
                 .banPeriod(club.getBanPeriod())
                 .maxPeople(club.getMaxPeople())
                 .vote(voteResponseList)

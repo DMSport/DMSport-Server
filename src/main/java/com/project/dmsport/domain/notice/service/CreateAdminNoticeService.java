@@ -17,7 +17,9 @@ public class CreateAdminNoticeService {
     private final UserFacade userFacade;
     @Transactional
     public void execute(CreateNoticeRequest request, NoticeType type) {
+
         User user = userFacade.getCurrentUser();
+
         noticeRepository.save(
                 Notice.builder()
                         .title(request.getTitle())

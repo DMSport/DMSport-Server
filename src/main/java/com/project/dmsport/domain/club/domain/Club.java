@@ -1,5 +1,6 @@
 package com.project.dmsport.domain.club.domain;
 
+import com.project.dmsport.domain.club.domain.enums.ActivityPlace;
 import com.project.dmsport.domain.club.domain.enums.ClubType;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
@@ -17,19 +18,22 @@ public class Club {
     @Column(name = "club_type", nullable = false, length = 10)
     private ClubType id;
 
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ActivityPlace place;
+
+    @Column(nullable = true)
     private LocalDate banPeriod;
 
     @Column(nullable = false)
-    private boolean ban;
+    private Boolean ban;
 
     @Column(nullable = false)
-    private boolean hope;
+    private Boolean hope;
 
     @Column(columnDefinition = "TINYINT", nullable = false)
     private Integer maxPeople;
-
-    @OneToOne(mappedBy = "club")
-    private ClubManager clubManager;
 
     @Builder
     public Club(ClubType clubType) {
@@ -43,8 +47,8 @@ public class Club {
         this.banPeriod = banPeriod;
     }
 
-    public Club restoreBan() {
-        this.ban = false;
+    public Club checkAndRestoreBan() {
+        if (banPeriod.isBefore(LocalDate.now())) this.ban = false;
         return this;
     }
 

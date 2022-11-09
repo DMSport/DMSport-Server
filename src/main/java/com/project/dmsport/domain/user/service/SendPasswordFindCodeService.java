@@ -21,7 +21,6 @@ public class SendPasswordFindCodeService {
         if (!userFacade.emailIsExist(email)) {
             throw UserNotFoundException.EXCEPTION;
         }
-
         authCodeFacade.sendMail(email);
     }
 }
