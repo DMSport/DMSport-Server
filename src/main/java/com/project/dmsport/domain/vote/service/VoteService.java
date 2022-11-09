@@ -1,4 +1,4 @@
-package com.project.dmsport.domain.club.service;
+package com.project.dmsport.domain.vote.service;
 
 import com.project.dmsport.domain.user.domain.User;
 import com.project.dmsport.domain.user.facade.UserFacade;
@@ -6,6 +6,7 @@ import com.project.dmsport.domain.vote.domain.Vote;
 import com.project.dmsport.domain.vote.domain.VoteUser;
 import com.project.dmsport.domain.vote.domain.VoteUserId;
 import com.project.dmsport.domain.vote.domain.repository.VoteUserRepository;
+import com.project.dmsport.domain.vote.exception.VoteNotFound;
 import com.project.dmsport.domain.vote.facade.VoteFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,16 +26,18 @@ public class VoteService {
         User user = userFacade.getCurrentUser();
         Vote vote = voteFacade.getVoteById(voteId);
 
-        voteFacade.checkComplete(vote);
+        if(vote.isComplete()) {
+            throw VoteNotFound.EXCEPTION;
+        }
 
-        if(voteUserRepository.findByVoteAndUser(vote, user).isPresent()) {
+        if (voteUserRepository.findByVoteAndUser(vote, user).isPresent()) {
             cancelVote(vote, user);
-        }else {
-            vote(vote, user);
+        } else {
+            doVote(vote, user);
         }
     }
 
-    private void vote(Vote vote, User user) {
+    private void doVote(Vote vote, User user) {
 
         vote.plusCount();
         voteUserRepository.save(VoteUser.builder()
