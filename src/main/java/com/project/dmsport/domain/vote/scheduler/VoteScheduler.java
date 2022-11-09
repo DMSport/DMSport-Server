@@ -41,7 +41,7 @@ public class VoteScheduler {
         if(club.isBan()) {
             return club.getBanPeriod().isBefore(LocalDate.now());
         }
-        return false;
+        return true;
     }
 
     private void generateLunchVote(ClubType clubType) {
