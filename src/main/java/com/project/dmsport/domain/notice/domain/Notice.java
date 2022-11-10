@@ -49,4 +49,8 @@ public class Notice extends BaseTimeEntity {
         this.title = title;
         this.content = content;
     }
+
+    public String generateContent() {
+        return content.length()>20 ? content.substring(0,19):content;
+    }
 }

@@ -14,13 +14,4 @@ import java.util.List;
 public class QueryAllNoticesResponse {
 
     private final List<NoticeResponse> notices;
-    @Getter
-    @Builder
-    public static class NoticeResponse {
-        private final Long id;
-        private final String title;
-        private final String contentPreview;
-        private final NoticeType type;
-        private final LocalDateTime createdAt;
-    }
 }

@@ -3,6 +3,7 @@ package com.project.dmsport.domain.notice.presentation;
 import com.project.dmsport.domain.notice.domain.enums.NoticeType;
 import com.project.dmsport.domain.notice.presentation.dto.request.CreateNoticeRequest;
 import com.project.dmsport.domain.notice.presentation.dto.request.ModifyNoticeRequest;
+import com.project.dmsport.domain.notice.presentation.dto.response.NoticeResponse;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryAllNoticesResponse;
 import com.project.dmsport.domain.notice.presentation.dto.response.QueryNoticeDetailResponse;
 import com.project.dmsport.domain.notice.service.*;
@@ -11,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/notices")
@@ -22,9 +25,15 @@ public class NoticeController {
     private final CreateClubNoticeService createClubNoticeService;
     private final ModifyNoticeService modifyNoticeService;
     private final DeleteNoticeService deleteNoticeService;
+    private final QueryRecentNoticeService queryRecentNoticeService;
     @GetMapping
     public QueryAllNoticesResponse searchNoticeList() {
         return queryAllNoticesService.execute();
+    }
+
+    @GetMapping("/recent")
+    public Map<String, List<NoticeResponse>> searchRecentNoticeList() {
+        return queryRecentNoticeService.execute();
     }
 
     @GetMapping("/{notice-id}")
@@ -55,4 +64,5 @@ public class NoticeController {
     public void deleteNotice(@PathVariable("notice-id") Long noticeId) {
         deleteNoticeService.execute(noticeId);
     }
+
 }
