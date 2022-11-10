@@ -73,7 +73,7 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, "/clubs/schedule/hope").hasAnyAuthority(
                         "BASKETBALL_MANAGER", "VOLLEYBALL_MANAGER", "BADMINTON_MANAGER", "SOCCER_MANAGER")
 
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
 
                 .and()
                 .apply(new FilterConfig(jwtTokenProvider, objectMapper))
