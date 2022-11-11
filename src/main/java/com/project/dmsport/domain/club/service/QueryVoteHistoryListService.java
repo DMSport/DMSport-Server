@@ -28,20 +28,20 @@ public class QueryVoteHistoryListService {
 
         List<Vote> voteList = voteFacade.getVoteListByClubType(clubType);
 
-        Map<LocalDate, List<VoteResponse>> store = new HashMap<>();
+        Map<LocalDate, List<VoteResponse>> voteStore = new HashMap<>();
 
         for (Vote vote: voteList) {
-            if(!store.containsKey(vote.getVoteDate())) {
-                store.put(vote.getVoteDate(), new ArrayList<>(Collections.singletonList(
+            if(!voteStore.containsKey(vote.getVoteDate())) {
+                voteStore.put(vote.getVoteDate(), new ArrayList<>(Collections.singletonList(
                         QueryVoteHistoryListResponse.of(vote, club))
                 ));
             } else {
-                store.get(vote.getVoteDate())
+                voteStore.get(vote.getVoteDate())
                         .add(QueryVoteHistoryListResponse.of(vote, club));
             }
         }
 
-        return new QueryVoteHistoryListResponse(store);
+        return new QueryVoteHistoryListResponse(voteStore);
     }
 
 }
