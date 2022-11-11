@@ -34,11 +34,11 @@ public class ClubController {
         return queryTodayVoteListService.execute(clubType, date);
     }
 
-//    @ResponseStatus(HttpStatus.NO_CONTENT)
-//    @PostMapping("/schedule/hope")
-//    public void outOfSchedule() {
-//        assignOutOfScheduleService.execute();
-//    }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PostMapping("/schedule/hope")
+    public void outOfSchedule() {
+        assignOutOfScheduleService.execute();
+    }
 
     @GetMapping("/vote/history")
     public QueryVoteHistoryListResponse getVoteHistory(@RequestParam(value = "type") ClubType clubType) {
