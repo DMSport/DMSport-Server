@@ -27,6 +27,10 @@ public class VoteFacade {
         }
     }
 
+    public List<Vote> getVoteListByClubType(ClubType clubType) {
+        return voteRepository.findAllByClubTypeOrderByVoteDateDesc(clubType);
+    }
+
     public List<Vote> getVoteListByClubTypeAndDate(ClubType clubType, LocalDate date) {
         return voteRepository.findAllByClubTypeAndVoteDateEquals(clubType, date);
     }

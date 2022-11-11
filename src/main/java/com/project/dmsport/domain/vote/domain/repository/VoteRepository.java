@@ -14,4 +14,6 @@ public interface VoteRepository extends JpaRepository<Vote, Long> {
 
     List<Vote> findAllByClubTypeAndVoteDateEquals(ClubType clubType, LocalDate date);
 
+    List<Vote> findAllByClubTypeOrderByVoteDateDesc(ClubType clubType);
+
 }
