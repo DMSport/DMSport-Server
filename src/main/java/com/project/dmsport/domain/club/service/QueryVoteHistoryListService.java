@@ -6,7 +6,7 @@ import com.project.dmsport.domain.club.facade.ClubFacade;
 import com.project.dmsport.domain.club.presentation.request.response.QueryVoteHistoryListResponse;
 import com.project.dmsport.domain.club.presentation.request.response.QueryVoteHistoryListResponse.VoteResponse;
 import com.project.dmsport.domain.vote.domain.Vote;
-import com.project.dmsport.domain.vote.facade.VoteFacade;
+import com.project.dmsport.domain.vote.domain.repository.VoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,14 +19,14 @@ import java.util.*;
 public class QueryVoteHistoryListService {
 
     private final ClubFacade clubFacade;
-    private final VoteFacade voteFacade;
+    private final VoteRepository voteRepository;
 
     @Transactional(readOnly = true)
     public QueryVoteHistoryListResponse execute(ClubType clubType) {
 
         Club club = clubFacade.getClubById(clubType);
 
-        List<Vote> voteList = voteFacade.getVoteListByClubType(clubType);
+        List<Vote> voteList = voteRepository.findAllByClubTypeOrderByVoteDateDesc(clubType);
 
         Map<LocalDate, List<VoteResponse>> voteStore = new HashMap<>();
 
