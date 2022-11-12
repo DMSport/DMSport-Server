@@ -5,7 +5,7 @@ import com.project.dmsport.domain.club.domain.enums.ClubType;
 import com.project.dmsport.domain.club.facade.ClubFacade;
 import com.project.dmsport.domain.club.presentation.response.QueryTodayVoteListResponse;
 import com.project.dmsport.domain.club.presentation.response.QueryTodayVoteListResponse.VoteResponse;
-import com.project.dmsport.domain.vote.facade.VoteFacade;
+import com.project.dmsport.domain.vote.domain.repository.VoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,19 +19,19 @@ import java.util.stream.Collectors;
 public class QueryTodayVoteListService {
 
     private final ClubFacade clubFacade;
-    private final VoteFacade voteFacade;
+    private final VoteRepository voteRepository;
 
     @Transactional(readOnly = true)
     public QueryTodayVoteListResponse execute(ClubType clubType, LocalDate date) {
 
         Club club = clubFacade.getClubById(clubType);
 
-        List<VoteResponse> voteResponseList = voteFacade.getVoteListByClubTypeAndDate(clubType, date)
+        List<VoteResponse> voteResponseList = voteRepository.findAllByClubTypeAndVoteDateEquals(clubType, date)
                 .stream()
                 .map(vote -> VoteResponse
                         .builder()
                         .voteId(vote.getId())
-                        .voteType(vote.getVoteType())
+                        .time(vote.getVoteType())
                         .voteCount(vote.getCount())
                         .build()
                 )

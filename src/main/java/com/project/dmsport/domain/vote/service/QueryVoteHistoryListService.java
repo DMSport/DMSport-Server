@@ -1,4 +1,4 @@
-package com.project.dmsport.domain.club.service;
+package com.project.dmsport.domain.vote.service;
 
 import com.project.dmsport.domain.club.domain.Club;
 import com.project.dmsport.domain.club.domain.enums.ClubType;
