@@ -1,8 +1,8 @@
 package com.project.dmsport.domain.club.presentation;
 
 import com.project.dmsport.domain.club.domain.enums.ClubType;
-import com.project.dmsport.domain.club.presentation.request.response.QueryTodayVoteListResponse;
-import com.project.dmsport.domain.club.presentation.request.response.QueryVoteHistoryListResponse;
+import com.project.dmsport.domain.club.presentation.response.QueryTodayVoteListResponse;
+import com.project.dmsport.domain.club.presentation.response.QueryVoteHistoryListResponse;
 import com.project.dmsport.domain.club.service.QueryTodayVoteListService;
 import com.project.dmsport.domain.club.service.QueryVoteHistoryListService;
 import com.project.dmsport.domain.club.service.VoteService;

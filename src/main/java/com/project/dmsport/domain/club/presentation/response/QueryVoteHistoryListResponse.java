@@ -1,4 +1,4 @@
-package com.project.dmsport.domain.club.presentation.request.response;
+package com.project.dmsport.domain.club.presentation.response;
 
 import com.project.dmsport.domain.club.domain.Club;
 import com.project.dmsport.domain.vote.domain.Vote;
