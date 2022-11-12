@@ -14,4 +14,6 @@ public interface VoteRepository extends CrudRepository<Vote, Long> {
 
     List<Vote> findAllByClubTypeAndVoteDateEquals(ClubType clubType, LocalDate date);
 
+    List<Vote> findAllByClubTypeOrderByVoteDateDesc(ClubType clubType);
+
 }

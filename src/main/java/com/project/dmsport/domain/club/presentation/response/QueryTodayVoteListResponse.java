@@ -20,7 +20,7 @@ public class QueryTodayVoteListResponse {
     @Builder
     public static class VoteResponse {
         private final Long voteId;
-        private final VoteType voteType;
+        private final VoteType time;
         private final Integer voteCount;
     }
 
