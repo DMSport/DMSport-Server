@@ -36,7 +36,7 @@ public class QueryTodayVoteListService {
                 .collect(Collectors.toList());
 
         return QueryTodayVoteListResponse.builder()
-                .isBan(club.isBan())
+                .isBan(club.getBan())
                 .banPeriod(club.getBanPeriod())
                 .maxPeople(club.getMaxPeople())
                 .vote(voteResponseList)
