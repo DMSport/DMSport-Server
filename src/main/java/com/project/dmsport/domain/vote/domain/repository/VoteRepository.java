@@ -10,10 +10,10 @@ import java.util.List;
 
 public interface VoteRepository extends CrudRepository<Vote, Long> {
 
-    List<Vote> findAllByVoteTypeAndCompleteFalse(VoteType voteType);
+    List<Vote> findByVoteTypeAndCompleteFalse(VoteType voteType);
 
-    List<Vote> findAllByClubTypeAndVoteDateEquals(ClubType clubType, LocalDate date);
+    List<Vote> findByClubTypeAndVoteDateEquals(ClubType clubType, LocalDate date);
 
-    List<Vote> findAllByClubTypeAndCompleteTrueOrderByVoteDateDesc(ClubType clubType);
+    List<Vote> findByClubTypeAndCompleteTrueOrderByVoteDateDesc(ClubType clubType);
 
 }

@@ -26,7 +26,7 @@ public class QueryTodayVoteListService {
 
         Club club = clubFacade.getClubById(clubType);
 
-        List<VoteResponse> voteResponseList = voteRepository.findAllByClubTypeAndVoteDateEquals(clubType, date)
+        List<VoteResponse> voteResponseList = voteRepository.findByClubTypeAndVoteDateEquals(clubType, date)
                 .stream()
                 .map(vote -> VoteResponse
                         .builder()
