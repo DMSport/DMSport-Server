@@ -29,7 +29,7 @@ public class QueryVoteHistoryListService {
 
         Club club = clubFacade.getClubById(clubType);
 
-        List<Vote> voteList = voteRepository.findAllByClubTypeOrderByVoteDateDesc(clubType);
+        List<Vote> voteList = voteRepository.findAllByClubTypeAndCompleteTrueOrderByVoteDateDesc(clubType);
 
         Map<LocalDate, List<VoteResponse>> voteStore = new HashMap<>();
 
