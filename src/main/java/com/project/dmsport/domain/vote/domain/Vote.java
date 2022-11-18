@@ -11,6 +11,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -43,7 +44,7 @@ public class Vote {
     private boolean complete;
 
     @OneToMany(mappedBy = "vote")
-    private List<VoteUser> voteUsers;
+    private List<VoteUser> voteUsers = new ArrayList<>();
 
     @Builder
     public Vote(ClubType clubType, VoteType voteType) {
