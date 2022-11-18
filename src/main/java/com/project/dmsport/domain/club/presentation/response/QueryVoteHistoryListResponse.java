@@ -24,14 +24,16 @@ public class QueryVoteHistoryListResponse {
                 private final VoteType time;
                 private final Integer voteCount;
                 private final Integer maxPeople;
+                private final List<String> voteUserName;
         }
 
-        public static VoteResponse of(Vote vote, Club club) {
+        public static VoteResponse of(Vote vote, Club club, List<String> voteUserList) {
                 return VoteResponse.builder()
                         .voteId(vote.getId())
                         .time(vote.getVoteType())
                         .voteCount(vote.getCount())
                         .maxPeople(club.getMaxPeople())
+                        .voteUserName(voteUserList)
                         .build();
         }
 
