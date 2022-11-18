@@ -34,7 +34,7 @@ public class QueryVoteHistoryListService {
         Map<LocalDate, List<VoteResponse>> voteStore = new HashMap<>();
 
         for (Vote vote: voteList) {
-            List<String> voteUserList = voteUserRepository.findAllByVote(vote)
+            List<String> voteUserList = voteUserRepository.findByVote(vote)
                     .stream()
                     .map(voteUser -> voteUser.getUser().getName())
                     .collect(Collectors.toList());
