@@ -15,6 +15,7 @@ import javax.persistence.*;
 public class ClubManager {
 
     @Id
+    @Enumerated(EnumType.STRING)
     @Column(name = "club_type")
     private ClubType id;
 
