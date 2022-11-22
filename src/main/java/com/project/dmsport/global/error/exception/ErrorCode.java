@@ -20,7 +20,7 @@ public enum ErrorCode {
     BAD_AUTH_CODE(401, "USER-401-1", "Bad Auth Code"),
 
     UNVERIFIED_EMAIL(401, "USER-401-1", "Unverified Email"),
-    PASSWORD_NOT_VALID(403, "USER-403-1", "Password Not Valid"),
+    PASSWORD_NOT_VALID(401, "USER-401-1", "Password Not Valid"),
     USER_NOT_FOUND(404, "USER-404-2", "User Not Found" ),
     USER_ALREADY_EXIST(409, "USER-409-1", "User Already Exist"),
 
