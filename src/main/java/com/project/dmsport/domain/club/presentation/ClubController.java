@@ -1,8 +1,8 @@
 package com.project.dmsport.domain.club.presentation;
 
 import com.project.dmsport.domain.club.domain.enums.ClubType;
-import com.project.dmsport.domain.club.presentation.response.QueryTodayVoteListResponse;
-import com.project.dmsport.domain.club.presentation.response.QueryVoteHistoryListResponse;
+import com.project.dmsport.domain.vote.presentation.dto.response.QueryTodayVoteListResponse;
+import com.project.dmsport.domain.vote.presentation.dto.response.QueryVoteHistoryListResponse;
 import com.project.dmsport.domain.club.service.AssignOutOfScheduleService;
 import com.project.dmsport.domain.vote.service.QueryTodayVoteListService;
 import com.project.dmsport.domain.vote.service.QueryVoteHistoryListService;
@@ -19,22 +19,8 @@ import java.time.LocalDate;
 @RestController
 public class ClubController {
 
-    private final VoteService voteService;
-    private final QueryTodayVoteListService queryTodayVoteListService;
     private final QueryVoteHistoryListService queryVoteHistoryListService;
     private final AssignOutOfScheduleService assignOutOfScheduleService;
-
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PostMapping("/vote/{vote-id}")
-    public void vote(@PathVariable(name = "vote-id") Long voteId) {
-        voteService.execute(voteId);
-    }
-
-    @GetMapping("/vote")
-    public QueryTodayVoteListResponse getVote(@RequestParam(value = "type") ClubType clubType,
-                                              @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-        return queryTodayVoteListService.execute(clubType, date);
-    }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PostMapping("/schedule/hope")
