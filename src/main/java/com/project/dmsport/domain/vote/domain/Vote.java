@@ -41,7 +41,7 @@ public class Vote {
     private LocalDate voteDate;
 
     @NotNull
-    private boolean complete;
+    private Boolean complete;
 
     @OneToMany(mappedBy = "vote")
     private List<VoteUser> voteUsers = new ArrayList<>();

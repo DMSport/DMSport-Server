@@ -16,6 +16,7 @@ public class VoteResponse {
     private final VoteType time;
     private final Integer voteCount;
     private final Integer maxPeople;
+    private final Boolean isComplete;
     private final List<VoteUserResponse> voteUser;
 
     public static VoteResponse of(Vote vote, Club club, List<VoteUserResponse> voteUserList) {
@@ -23,6 +24,7 @@ public class VoteResponse {
                 .voteId(vote.getId())
                 .time(vote.getVoteType())
                 .voteCount(vote.getCount())
+                .isComplete(vote.getComplete())
                 .maxPeople(club.getMaxPeople())
                 .voteUser(voteUserList)
                 .build();
