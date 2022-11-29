@@ -26,7 +26,7 @@ public class VoteService {
         User user = userFacade.getCurrentUser();
         Vote vote = voteFacade.getVoteById(voteId);
 
-        if(vote.isComplete()) {
+        if(vote.getComplete()) {
             throw VoteNotFound.EXCEPTION;
         }
 
