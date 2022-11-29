@@ -26,11 +26,11 @@ public class QueryTodayVoteListService {
     private final VoteUserRepository voteUserRepository;
 
     @Transactional(readOnly = true)
-    public QueryTodayVoteListResponse execute(ClubType clubType, LocalDate date) {
+    public QueryTodayVoteListResponse execute(ClubType clubType) {
 
         Club club = clubFacade.getClubById(clubType);
 
-        List<VoteResponse> voteResponseList = voteRepository.findByClubTypeAndVoteDateEquals(clubType, date)
+        List<VoteResponse> voteResponseList = voteRepository.findByClubTypeAndVoteDateEquals(clubType, LocalDate.now())
                 .stream()
                 .map(vote -> {
                     List<VoteUserResponse> voteUserList = voteUserRepository.findByVote(vote)
