@@ -1,6 +1,7 @@
 package com.project.dmsport.domain.vote.domain;
 
 import com.project.dmsport.domain.user.domain.User;
+import com.project.dmsport.domain.vote.domain.enums.Team;
 import com.project.dmsport.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -24,6 +25,15 @@ public class VoteUser extends BaseTimeEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @Column(nullable = true)
+    private Team team;
+
+    public void setTeam(Team team) {
+        if(this.team != null) {
+            this.team = team;
+        }
+    }
 
     @Builder
     public VoteUser(Vote vote, User user) {

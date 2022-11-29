@@ -26,9 +26,8 @@ public class VoteController {
     }
 
     @GetMapping("/vote")
-    public QueryTodayVoteListResponse getVote(@RequestParam(value = "type") ClubType clubType,
-                                              @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
-        return queryTodayVoteListService.execute(clubType, date);
+    public QueryTodayVoteListResponse getVote(@RequestParam(value = "type") ClubType clubType) {
+        return queryTodayVoteListService.execute(clubType);
     }
 
 }
