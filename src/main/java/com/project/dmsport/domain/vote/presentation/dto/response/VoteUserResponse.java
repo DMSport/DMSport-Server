@@ -15,7 +15,7 @@ public class VoteUserResponse {
         return VoteUserResponse
                 .builder()
                 .name(voteUser.getUser().getName())
-                .team(voteUser.getTeam().ordinal())
+                .team(voteUser.getTeam() != null ? voteUser.getTeam().ordinal() : null)
                 .build();
     }
 }
