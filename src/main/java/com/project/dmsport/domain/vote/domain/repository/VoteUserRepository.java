@@ -17,4 +17,6 @@ public interface VoteUserRepository extends CrudRepository<VoteUser, VoteUserId>
     @EntityGraph(attributePaths = {"user"})
     List<VoteUser> findByVote(Vote vote);
 
+    void deleteByUser(User user);
+
 }
