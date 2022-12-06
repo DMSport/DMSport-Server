@@ -11,7 +11,7 @@ spring:
     properties:
       generate-ddl: false
       hibernate:
-        format_sql: true
+        format_sql: false
     defer-datasource-initialization: true
     show-sql: true
   jackson:
