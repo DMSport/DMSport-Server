@@ -40,7 +40,7 @@ public class CloseVoteScheduler {
         Collections.shuffle(voteUsers);
         int voteUsersSize = voteUsers.size();
 
-        List<VoteUser> team1 = voteUsers.subList(0, voteUsersSize / 2);
+        List<VoteUser> team1 = voteUsers.subList(0, voteUsersSize / 2 + 1);
         team1.forEach(vu -> {
             vu.setTeam(Team.TEAM1);
             voteUserRepository.save(vu);
